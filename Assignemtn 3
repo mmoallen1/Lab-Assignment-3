@@ -1,0 +1,238 @@
+#include <iostream>
+#include <cstdlib>
+
+
+using namespace std;
+
+void firstmenu();
+int linearsearch(const int[], string, double);
+//const string booklist = 10;
+void display();
+void binarysearchmain();
+void bubblesort();
+void selectionsortmain();
+void showBubblesort(const int [], int);
+void bubblesorted(int [], int);
+int arraybub[1000];
+void bubble_sort(int[], int );
+
+int main()
+{
+    firstmenu();
+    return 0;
+}
+
+void firstmenu(){
+    char choice;
+    cout<<"         Main Menu\n\n A. Linear Search\n B. Binary Search\n C. Bubble Sort\n D. Selection Sort\n E. Exit"<<endl;
+    cin>>choice;    //Menu for the first prompt of user information.
+switch (choice){
+    case 'a':
+    case 'A':
+//    linearsearch();
+    break;
+
+    case 'b':
+    case 'B':
+    binarysearchmain();
+    break;
+
+    case 'c':
+    case 'C':
+    for(int i=0; i<1000; i++){
+                int value = rand() % 500+1;
+
+                arraybub[i] = value;
+            }
+            cout << "Initial set of numbers: ";
+            for(int i=0; i<1000; i++)
+                cout << arraybub[i] << " ";
+            cout << endl << "Bubble Sort: ";
+            bubble_sort(arraybub, 1000);
+            for(int i=0; i<1000; i++)
+                cout << arraybub[i] << " ";
+            cout << endl;
+    break;
+
+    case 'd':
+    case 'D':
+    selectionsortmain();
+
+
+    default: cout<<"The program will now exit."<<endl;
+}
+}
+
+//                                                      THE START OF LINEAR SEARCH
+/*
+void linearsearch(){
+string booktitle[10] = {"Starting out with C++" , "Java Programming" , "Software Structures" , "Design and Analysis of Algorithms" ,
+    "Computer Graphics" , "Artificial Intelligence: A Modern Approach" , "Probability and Statistics" , "Cognitive Science" ,
+    "Modern Information Retrieval" , "Speech and Language Processing"};
+    int results;
+int bookid[] = {1101, 1211, 1333, 1456, 1567, 1642, 1699, 1755, 1800, 1999};
+double bookprice[] = {112.32, 73.25, 54.00, 67.32, 135.00, 173.22, 120.00, 42.25, 32.11, 123.75};
+cout<<"Enter desired book ID"<<endl;
+cin>>bookid;
+results = linearsearch(booktitle, booklist, bookid);
+if (results = )
+
+
+
+double booknumber;
+double booktotal;
+int bookchoice=0;
+display();
+cout<<"Enter desired book ID"<<endl;
+cin>>bookchoice;
+cout<<"How many of that book would you like to purchase?"<<endl;
+cin>>booknumber;
+switch (bookchoice){
+    case '1101':
+    booktotal = 112.32*booknumber;
+    cout<<"Book ID: 1101\nBook Cost: $112.32\nNumber of books: "<<booknumber<<"\nTotal cost: "<<booktotal<<endl;
+    break;
+
+    case '1211':
+        booktotal = 73.25*booknumber;
+        cout<<"Book ID: 1211\nBook Cost: $73.25\nNumber of books: "<<booknumber<<"\nTotal cost: "<<booktotal<<endl;
+
+
+    }
+
+
+}
+*/
+
+//                                                 MY DISPLAY FOR OPTIONS A OR B
+void display(){
+cout<<"Book ID      Title                                                Cost\n"<<endl;
+cout<<"1101        Starting out with C++                                 $112.32\n1211        Java Programming                                      $73.25\n1333        Software Structures                                   $54.00\n1456        Design and Analysis of Algorithms                     $67.32\n1567        Computer Graphics                                     $135.00"<<endl;
+cout<<"1642        Artificial Intelligence: A Modern Approach            $173.22\n1699        Probability and Statistics                            $120.00\n1755        Cognitive Science                                     $42.25\n1800        Modern Information Retrieval                          $32.11\n1999        Speech and Language Processing                        $123.75"<<endl;
+
+}
+
+
+//                                                  START OF BINARY SEARCH....
+int binarySearch(const int[], int, int);
+const int bSIZE=10;
+void binarysearchmain()
+{
+    int idNums[bSIZE]={1101, 1211, 1333, 1456, 1567, 1642, 1699, 1755, 1800, 1999};
+    int results;
+    int empID;
+    display();
+    cout<<"Enter the book ID you wish to search for: ";
+    cin>>empID;
+
+    results = binarySearch(idNums, bSIZE, empID);
+
+    if(results == -1)
+        cout<<"That Book ID does not exist"<<endl;
+    else
+    {
+        cout<<"That ID is found at element "<<results;                   //   This is where I need function to determine how many and calculate price.
+        cout<<" in the array.\n";
+    }
+}
+int binarySearch(const int array[], int bosize, int value)
+{
+    int first = 0,
+        last = bosize - 1,
+        middle,
+        position = -1;
+    bool found = false;
+
+    while (!found && first<=last)
+    {
+        middle = (first + last) / 2;
+        if (array[middle] == value)
+        {
+            found = true;
+            position = middle;
+        }
+        else if (array[middle]>value)
+            last = middle - 1;
+        else
+            first = middle + 1;
+    }
+    return position;
+
+}
+
+
+
+
+
+
+
+
+
+//                                                            BUBBLE SORT WORKS
+
+void bubble_sort(int array[], int size){
+    for(int i=0; i<size; i++){
+        for(int j=0; j<size; j++){
+            if(array[j] > array[j+1]){
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
+        }
+    }
+}
+
+
+
+//                                                           SELECTION SORT WORKS
+
+
+void selectionsort(int[], int);
+void showArray(const int [], int);
+
+void selectionsortmain(){
+    const int SIZE = 1000;
+    int values[SIZE];
+    for (int i=0;i<SIZE; i++){
+        values[i]=(rand() % 500)+1;
+    }
+
+    cout<<"The unsorted values are: \n";
+    showArray(values,SIZE);
+
+    //sort the values
+    selectionsort(values, SIZE);
+
+    //display values again
+    cout<<"The sorted values are\n";
+    showArray(values, SIZE);
+
+}
+
+void selectionsort(int array[],int thesize)
+{
+    int startscan, minIndex, minValue;
+
+    for(startscan=0; startscan<(thesize-1); startscan++)
+    {
+        minIndex=startscan;
+        minValue=array[startscan];
+        for (int index = startscan + 1; index < thesize; index++)
+        {
+            if(array[index]<minValue)
+            {
+                minValue=array[index];
+                minIndex=index;
+            }
+        }
+        array[minIndex]=array[startscan];
+        array[startscan]=minValue;
+    }
+}
+
+void showArray(const int array[], int thesize)
+{
+    for(int count = 0; count < thesize; count++)
+        cout<<array[count]<<" ";
+    cout<<endl;
+}
