@@ -5,7 +5,7 @@
 using namespace std;
 
 void firstmenu();
-int linearsearch(const int[], string, double);
+int linearsearch();
 //const string booklist = 10;
 void display();
 void binarysearchmain();
@@ -15,6 +15,15 @@ void showBubblesort(const int [], int);
 void bubblesorted(int [], int);
 int arraybub[1000];
 void bubble_sort(int[], int );
+
+string booktitle[10] = {"Starting out with C++" , "Java Programming" , "Software Structures" , "Design and Analysis of Algorithms" ,
+    "Computer Graphics" , "Artificial Intelligence: A Modern Approach" , "Probability and Statistics" , "Cognitive Science" ,
+    "Modern Information Retrieval" , "Speech and Language Processing"};
+    int results;
+int bookid[] = {1101, 1211, 1333, 1456, 1567, 1642, 1699, 1755, 1800, 1999};
+double bookprice[] = {112.32, 73.25, 54.00, 67.32, 135.00, 173.22, 120.00, 42.25, 32.11, 123.75};
+
+
 
 int main()
 {
@@ -29,7 +38,7 @@ void firstmenu(){
 switch (choice){
     case 'a':
     case 'A':
-//    linearsearch();
+    linearsearch();
     break;
 
     case 'b':
@@ -64,17 +73,14 @@ switch (choice){
 }
 
 //                                                      THE START OF LINEAR SEARCH
-/*
+
 void linearsearch(){
-string booktitle[10] = {"Starting out with C++" , "Java Programming" , "Software Structures" , "Design and Analysis of Algorithms" ,
-    "Computer Graphics" , "Artificial Intelligence: A Modern Approach" , "Probability and Statistics" , "Cognitive Science" ,
-    "Modern Information Retrieval" , "Speech and Language Processing"};
-    int results;
-int bookid[] = {1101, 1211, 1333, 1456, 1567, 1642, 1699, 1755, 1800, 1999};
-double bookprice[] = {112.32, 73.25, 54.00, 67.32, 135.00, 173.22, 120.00, 42.25, 32.11, 123.75};
+
 cout<<"Enter desired book ID"<<endl;
 cin>>bookid;
-results = linearsearch(booktitle, booklist, bookid);
+
+
+
 if (results = )
 
 
@@ -102,7 +108,7 @@ switch (bookchoice){
 
 
 }
-*/
+
 
 //                                                 MY DISPLAY FOR OPTIONS A OR B
 void display(){
@@ -114,18 +120,19 @@ cout<<"1642        Artificial Intelligence: A Modern Approach            $173.22
 
 
 //                                                  START OF BINARY SEARCH....
-int binarySearch(const int[], int, int);
+
 const int bSIZE=10;
 void binarysearchmain()
 {
-    int idNums[bSIZE]={1101, 1211, 1333, 1456, 1567, 1642, 1699, 1755, 1800, 1999};
+
+
     int results;
     int empID;
     display();
     cout<<"Enter the book ID you wish to search for: ";
     cin>>empID;
 
-    results = binarySearch(idNums, bSIZE, empID);
+
 
     if(results == -1)
         cout<<"That Book ID does not exist"<<endl;
